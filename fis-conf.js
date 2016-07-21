@@ -6,19 +6,21 @@ fis.match('*.{js,css}', {
 });
 
 fis.match('::image', {
-  useHash: true,
-  release: '/static/img$0',
+  useHash: true
 });
 
 fis.match('*.js', {
-  useHash: true,
-  release: '/static/js$0',
   optimizer: fis.plugin('uglify-js')
 });
 
+fis.match('*.scss', {
+	rExt: '.css',
+	parser: fis.plugin('node-sass',{
+		
+	})
+});
+
 fis.match('*.css', {
-  useHash: true,
-  release: '/static/$0',
   optimizer: fis.plugin('clean-css')
 });
 
